@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bus
+  name: tetris
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: bus
+      app: tetris
   template:
     metadata:
       labels:
-        app: bus
+        app: tetris
     spec:
       containers:
-      - name: bus
-        image: shaikmustafa/paytm:bus
+      - name: tetris
+        image: shaikmustafa/mytetrisgame:v1
         ports:
         - containerPort: 3000   # Use port 3000
 
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bus-service
+  name: tetris-service
 spec:
   selector:
-    app: bus
+    app: tetris
   ports:
   - protocol: TCP
     port: 80                 # Expose port 80
